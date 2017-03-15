@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="AnterosArchetype-1.0.0">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <dependent-module archiveName="Anteros-Persistence-Core-1.0.16.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Anteros-Persistence-Core/Anteros-Persistence-Core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Anteros-Core-1.1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Anteros-Core/Anteros-Core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Anteros-Persistence-Serialization-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Anteros-Persistence-Serialization/Anteros-Persistence-Serialization">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Anteros-Security-1.0.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Anteros-Security/Anteros-Security">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Anteros-Generator-Maven-Plugin-1.0.7.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Anteros-Generator-Maven-Plugin/Anteros-Generator-Maven-Plugin">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Anteros-Generator-Core-1.0.12.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Anteros-Generator-Core/Anteros-Generator-Core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Anteros-RestDoc-Maven-Plugin-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Anteros-RestDoc-Maven-Plugin/Anteros-RestDoc-Maven-Plugin">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/AnterosArchetype/target/classes"/>
+        <property name="context-root" value="AnterosArchetype"/>
+    </wb-module>
+</project-modules>
