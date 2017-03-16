@@ -3,7 +3,7 @@ O **Anteros Archetype Webapp**  é um archetype maven utilizado para gerar proje
 
 ## Introdução
 
-Os archetypes do maven são templates com alguns arquivos e uma estrutura inicial pré-definida. 
+Os archetypes do maven são templates contendo alguns arquivos de configuração com uma estrutura inicial pré-definida. 
 
 Ao utilizar o Anteros Archetype já estão inclusos os frameworks: 
 
@@ -13,19 +13,19 @@ Ao utilizar o Anteros Archetype já estão inclusos os frameworks:
  
  * [Anteros Security](https://github.com/anterostecnologia/anterossecurity) e [Anteros Security Spring](https://github.com/anterostecnologia/anterossecurityspring) - Implementação do Spring Security para uso com o modelo de segurança do Anteros.
  
- * [Anteros Generator Maven Plugin](https://github.com/anterostecnologia/anterosgeneratormavenplugin) - Plugin do maven para geração de serviços, repositórios e controles do Spring para as classes selecionadas do modelo, podendo ainda gerar essas classes para o modelo de segurança ou não.
+ * [Anteros Generator Maven Plugin](https://github.com/anterostecnologia/anterosgeneratormavenplugin) - Plugin do maven para geração de serviços, repositórios e controles do Spring para as classes selecionadas do modelo, podendo inclusive gerar classes para o modelo de segurança.
  
  * [Anteros Rest Documentation](https://github.com/anterostecnologia/anterosrestdocmavenplugin) - Plugin do maven para geração automática de documentação de API's REST tanto para Spring como para JAX-RS.
  
- * [Anteros Log4j Web Tracker](https://github.com/anterostecnologia/anteroslog4jwebtracker) - Ferramenta web utilizada para configurar em tempo real os logs do Apache Log4j da aplicação.
+ * [Anteros Log4j Web Tracker](https://github.com/anterostecnologia/anteroslog4jwebtracker) - Ferramenta web utilizada para configurar e visualizar em tempo real os logs do Apache Log4j da aplicação.
  
  * Javadoc com [UMLGraph](https://github.com/dspinellis/UMLGraph) - Geração do javadoc da aplicação com gráficos UML.
  
  ## Utilização
  
- Para utilizar o Anteros Archetype Webapp siga os seguintes passos: 
+ Para utilizar o Anteros Archetype Webapp no Eclipse IDE siga os seguintes passos: 
  
- 1. Abra o Eclipse IDE
+ 1. Abra a IDE
  
  2. File > New > Others > Maven > Maven Projects > Next
  
@@ -46,7 +46,7 @@ Ao utilizar o Anteros Archetype já estão inclusos os frameworks:
  7. Altere os valores do arquivo src/main/WEB-INF/anterosConfiguration.properties de acordo com suas especificações.
  
  
- **Obs: Se não aparecer o Anteros-Archetype na lista do item 4 é necessário configurar para o Eclipse IDE reconhecer os archetypes externos, conforme instruções abaixo:**
+ **Obs: Se não aparecer o Anteros-Archetype na lista do item 4 será necessário configurar para o Eclipse IDE reconhecer os archetypes externos, conforme instruções abaixo:**
  
  1. Selecione _Configure..._
  
@@ -63,4 +63,17 @@ Ao utilizar o Anteros Archetype já estão inclusos os frameworks:
  4. Clique em OK e pronto. Agora deve aparecer o Anteros-Archetype para selecionar
  
   ![Log](screenshots/image_02.png)
+  
+## Licença ##
+
+Apache 2.0
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+![alt text](http://i.imgur.com/A3jgQC6.png)  
+
+Anteros Tecnologia
+
+
+
  
