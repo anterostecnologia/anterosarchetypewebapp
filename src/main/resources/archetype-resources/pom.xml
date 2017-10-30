@@ -90,6 +90,24 @@
 			<artifactId>Anteros-Persistence-Apt</artifactId>
 			<version>[1.0.0,)</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>br.com.anteros</groupId>
+			<artifactId>Anteros-Bean-Validation-Api</artifactId>
+			<version>[1.0.0,)</version>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.anteros</groupId>
+			<artifactId>Anteros-Bean-Validation</artifactId>
+			<version>[1.0.0,)</version>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.anteros</groupId>
+			<artifactId>Anteros-EL</artifactId>
+			<version>[1.0.0,)</version>
+		</dependency>
 
 		<dependency>
 			<groupId>br.com.anteros</groupId>
@@ -219,7 +237,7 @@
 							<packageScanEndpoints>
 								<package>#pacote_para_escanear#</package>
 							</packageScanEndpoints>
-							<urlBase>#url_base_projeto#</urlBase>
+							<urlBase>${project.url}</urlBase>
 							<includeDependencySources>true</includeDependencySources>
 							<dependencySourceIncludes>
 								<dependencySourceInclude>br.com.anteros:Anteros-Spring-Web</dependencySourceInclude>
@@ -250,6 +268,7 @@
 							<generateRepository>true</generateRepository>
 							<generateController>true</generateController>
 							<generateService>true</generateService>
+							<generateExceptionHandler>true</generateExceptionHandler>
 							<generateJavaConfiguration>true</generateJavaConfiguration>
 							<generateForAbstractClass>true</generateForAbstractClass>
 							<packageScanComponentsList>
