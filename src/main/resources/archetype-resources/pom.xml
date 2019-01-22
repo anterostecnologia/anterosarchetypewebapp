@@ -8,12 +8,18 @@
 	<version>${version}</version>
 	<packaging>war</packaging>
 
-	<name>#nome_projeto#</name>
-	<url>#url_projeto#</url>
+	<name># NOME DO PROJETO AQUI #</name>
+	<url># URL DO PROJETO AQUI #</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
+		<springframework.version>5.0.7.RELEASE</springframework.version>
+		<springsecurity.version>5.0.6.RELEASE</springsecurity.version>
+		<springsecurityoauth2.version>2.3.4.RELEASE</springsecurityoauth2.version>
+		<jackson.library>2.9.8</jackson.library>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
 	<dependencies>
@@ -43,18 +49,31 @@
 		</dependency>
 
 		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.11</version>
+		</dependency>
+
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>4.2.0.RELEASE</version>
-		</dependency>
 
 		<!-- ANTEROS -->
+		<dependency>
+			<groupId>br.com.anteros</groupId>
+			<artifactId>Anteros-Spring</artifactId>
+			<version>[1.0.0,)</version>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.anteros</groupId>
+			<artifactId>Anteros-Security-Store-SQL</artifactId>
+			<version>[1.0.0,)</version>
+		</dependency>
+
 		<dependency>
 			<groupId>br.com.anteros</groupId>
 			<artifactId>Anteros-Spring-Web</artifactId>
@@ -90,7 +109,7 @@
 			<artifactId>Anteros-Persistence-Apt</artifactId>
 			<version>[1.0.0,)</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>br.com.anteros</groupId>
 			<artifactId>Anteros-Bean-Validation-Api</artifactId>
@@ -111,14 +130,8 @@
 
 		<dependency>
 			<groupId>br.com.anteros</groupId>
-			<artifactId>Anteros-Security</artifactId>
-			<version>[1.0.0,)</version>
-		</dependency>
-
-		<dependency>
-			<groupId>br.com.anteros</groupId>
 			<artifactId>Anteros-Security-Spring</artifactId>
-			<version>[1.0.0,)</version>
+			<version>[2.0.0,)</version>
 		</dependency>
 
 		<dependency>
@@ -158,6 +171,54 @@
 			<version>${java.version}</version>
 			<scope>system</scope>
 			<systemPath>${java.home}/../lib/tools.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-jcl</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.library}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.library}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.library}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+			<version>${springsecurityoauth2.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.anteros</groupId>
+			<artifactId>Anteros-Security-Spring-SQL</artifactId>
+			<version>[1.0.0,)</version>
 		</dependency>
 
 	</dependencies>
@@ -235,7 +296,7 @@
 							<doctype>book</doctype>
 							<outputDirectory>src/main/webapp/doc</outputDirectory>
 							<packageScanEndpoints>
-								<package>#pacote_para_escanear#</package>
+								<package># INSIRA AQUI O NOME DO PACOTE ONDE SE ENCONTRAM OS ENDPOINTS #</package>
 							</packageScanEndpoints>
 							<urlBase>${project.url}</urlBase>
 							<includeDependencySources>true</includeDependencySources>
@@ -253,6 +314,7 @@
 			<plugin>
 				<groupId>br.com.anteros</groupId>
 				<artifactId>Anteros-Generator-Maven-Plugin</artifactId>
+				<version>2.0.0</version>
 				<executions>
 					<execution>
 						<id>generate</id>
@@ -263,19 +325,30 @@
 						<configuration>
 							<enabled>true</enabled>
 							<sourceDestination>${basedir}/src/main/java</sourceDestination>
-							<packageDestination>#pacote_destino#</packageDestination>
+							<packageDestination># INSIRA AQUI O NOME DO PACOTE ONDE DEVEM SER GERADAS AS CLASSES #</packageDestination>
 							<includeSecurity>true</includeSecurity>
+							<persistenceDatabase>sql</persistenceDatabase>
+							<securityPersistenceDatabase>sql</securityPersistenceDatabase>
+							<remoteEndPointCheckToken>http://localhost:8090/Anteros-OAuth2-Server/oauth/check_token</remoteEndPointCheckToken>
 							<generateRepository>true</generateRepository>
 							<generateController>true</generateController>
+							<securedPattern>/v1/**</securedPattern>
+							<resourceVersion>v1</resourceVersion>
+							<resourceID># INSIRA AQUI O NOME DO RESOURCE #</resourceID>
+							<useAnterosOAuth2Server>true</useAnterosOAuth2Server>
+							<clientID># INSIRA AQUI O ID PARA O SEU CLIENT #</clientID>
+							<clientSecret># INSIRA AQUI A SENHA SECRETA - LEMBRE-SE DE REMOVE-LA DEPOIS QUE GERAR TUDO #</clientSecret>
 							<generateService>true</generateService>
 							<generateExceptionHandler>true</generateExceptionHandler>
 							<generateJavaConfiguration>true</generateJavaConfiguration>
 							<generateForAbstractClass>true</generateForAbstractClass>
 							<packageScanComponentsList>
-								<package>#pacote_contendo_anotacoes_spring#</package>
+								<package># INSIRA AQUI O NOME DO PACOTE ONDE SE ENCONTRAM OS REPOSITORIES #</package>
+								<package># INSIRA AQUI O NOME DO PACOTE ONDE SE ENCONTRAM OS SERVICES #</package>
+								<package># INSIRA AQUI O NOME DO PACOTE ONDE SE ENCONTRAM OS RESOURCES #</package>
 							</packageScanComponentsList>
 							<packageScanEntitiesList>
-								<package>#pacote_entidade_modelo#</package>
+								<package># PACOTE ONDE ESTÃO AS ENTIDADES #</package>
 							</packageScanEntitiesList>
 							<propertiesFile>WEB-INF/anterosConfiguration.properties</propertiesFile>
 						</configuration>
@@ -283,5 +356,41 @@
 				</executions>
 			</plugin>
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											br.com.anteros
+										</groupId>
+										<artifactId>
+											Anteros-Generator-Maven-Plugin
+										</artifactId>
+										<versionRange>
+											[2.0.0,)
+										</versionRange>
+										<goals>
+											<goal>generate</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 </project>
